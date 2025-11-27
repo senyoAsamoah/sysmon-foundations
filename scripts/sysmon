@@ -1,1 +1,19 @@
 #!/bin/bash
+
+case "$1" in
+  system)
+    bash $(dirname $0)/system_report.sh
+    ;;
+  network)
+    bash $(dirname $0)/network_tools.sh "${@:2}"
+    ;;
+  summary)
+    echo "=== System Summary ==="
+    bash $(dirname $0)/system_report.sh
+    bash $(dirname $0)/network_tools.sh ports
+    ;;
+  help|*)
+    echo "SysMon CLI"
+    echo "Usage: sysmon <system|network|summary|help>"
+    ;;
+esac

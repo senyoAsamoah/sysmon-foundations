@@ -1,1 +1,9 @@
 [Unit]
+Description=SysMon System Report Service
+
+[Service]
+ExecStart=/opt/sysmon/scripts/sysmon system
+User=sysmon_user
+
+[Install]
+WantedBy=multi-user.target
