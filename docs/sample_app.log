@@ -1,0 +1,93 @@
+[2024-03-01 00:01:02] INFO  [auth-service]      User login successful: user_id=1042 ip=192.168.1.10 session=abc123
+[2024-03-01 00:02:15] DEBUG [db-pool]           Connection acquired: pool_size=10 active=3 idle=7
+[2024-03-01 00:03:44] INFO  [api-gateway]       GET /api/v1/products 200 45ms user_id=1042
+[2024-03-01 00:04:10] WARN  [rate-limiter]      Rate limit threshold reached: ip=203.0.113.5 requests=95/100
+[2024-03-01 00:05:33] ERROR [payment-service]   Payment failed: order_id=ORD-8821 reason="card_declined" user_id=2201 amount=149.99
+[2024-03-01 00:06:01] INFO  [api-gateway]       POST /api/v1/orders 201 120ms user_id=3310
+[2024-03-01 00:07:18] DEBUG [cache]             Cache miss: key=product:5521 ttl_remaining=0
+[2024-03-01 00:08:45] INFO  [email-service]     Email sent: to=alice@example.com template=order_confirm msg_id=msg-4401
+[2024-03-01 00:09:02] ERROR [auth-service]      Failed login attempt: user_id=UNKNOWN ip=203.0.113.5 reason="invalid_password" attempt=1
+[2024-03-01 00:09:14] ERROR [auth-service]      Failed login attempt: user_id=UNKNOWN ip=203.0.113.5 reason="invalid_password" attempt=2
+[2024-03-01 00:09:27] ERROR [auth-service]      Failed login attempt: user_id=UNKNOWN ip=203.0.113.5 reason="invalid_password" attempt=3
+[2024-03-01 00:09:40] WARN  [auth-service]      Account locked after repeated failures: ip=203.0.113.5 lockout_minutes=30
+[2024-03-01 00:10:05] INFO  [api-gateway]       GET /api/v1/users/1042/profile 200 22ms user_id=1042
+[2024-03-01 00:11:55] DEBUG [db-pool]           Slow query detected: query="SELECT * FROM orders WHERE user_id=2201" duration=1823ms threshold=500ms
+[2024-03-01 00:12:30] INFO  [inventory-service] Stock updated: product_id=5521 old_qty=120 new_qty=119
+[2024-03-01 00:13:44] ERROR [payment-service]   Payment failed: order_id=ORD-8822 reason="insufficient_funds" user_id=4401 amount=89.50
+[2024-03-01 00:14:00] INFO  [api-gateway]       DELETE /api/v1/cart/items/99 204 18ms user_id=3310
+[2024-03-01 00:15:21] WARN  [db-pool]           Connection pool near capacity: pool_size=10 active=9 idle=1
+[2024-03-01 00:16:33] INFO  [auth-service]      User logout: user_id=1042 session=abc123 session_duration=915s
+[2024-03-01 00:17:05] DEBUG [cache]             Cache set: key=product:5522 ttl=3600
+[2024-03-01 00:18:12] INFO  [api-gateway]       GET /api/v1/products/5522 200 11ms user_id=5500
+[2024-03-01 00:19:45] ERROR [email-service]     Email delivery failed: to=bob@example.com msg_id=msg-4402 smtp_code=550 reason="mailbox_full"
+[2024-03-01 00:20:01] INFO  [api-gateway]       POST /api/v1/auth/login 200 55ms
+[2024-03-01 00:21:18] WARN  [inventory-service] Low stock alert: product_id=3310 qty=5 reorder_threshold=10
+[2024-03-01 00:22:44] DEBUG [db-pool]           Connection released: pool_size=10 active=2 idle=8
+[2024-03-01 00:23:09] INFO  [payment-service]   Payment successful: order_id=ORD-8823 user_id=5500 amount=299.00 method=credit_card
+[2024-03-01 00:24:55] ERROR [api-gateway]       GET /api/v1/admin/config 403 user_id=5500 reason="insufficient_permissions"
+[2024-03-01 00:25:30] INFO  [auth-service]      Password reset requested: user_id=2201 ip=10.0.0.22
+[2024-03-01 00:26:14] DEBUG [cache]             Cache eviction: evicted_keys=42 reason="memory_pressure" used_mb=480 limit_mb=512
+[2024-03-01 00:27:00] WARN  [api-gateway]       Deprecated endpoint called: /api/v1/legacy/search user_id=6601 sunset_date=2024-06-01
+[2024-03-01 00:28:33] INFO  [api-gateway]       GET /api/v1/products?category=electronics 200 67ms user_id=6601
+[2024-03-01 00:29:10] ERROR [db-pool]           Connection timeout: host=db-primary:5432 timeout_ms=3000 query="INSERT INTO audit_log VALUES(...)"
+[2024-03-01 00:30:05] INFO  [api-gateway]       POST /api/v1/reviews 201 88ms user_id=5500
+[2024-03-01 00:31:22] WARN  [payment-service]   Retry attempt: order_id=ORD-8821 attempt=2 next_retry_in=60s
+[2024-03-01 00:32:44] DEBUG [auth-service]      Token refreshed: user_id=5500 old_expiry=2024-03-01T00:32:44 new_expiry=2024-03-01T01:32:44
+[2024-03-01 00:33:55] INFO  [email-service]     Email sent: to=charlie@example.com template=password_reset msg_id=msg-4403
+[2024-03-01 00:34:10] ERROR [inventory-service] Failed to sync inventory: source=warehouse-B error="connection_refused" retry=true
+[2024-03-01 00:35:01] INFO  [api-gateway]       GET /api/v1/orders/ORD-8823 200 30ms user_id=5500
+[2024-03-01 00:36:18] WARN  [cache]             Cache hit rate low: rate=0.42 window=5min threshold=0.70
+[2024-03-01 00:37:44] INFO  [api-gateway]       PUT /api/v1/users/2201/profile 200 44ms user_id=2201
+[2024-03-01 00:38:05] DEBUG [db-pool]           Query plan changed: table=products old_plan=seq_scan new_plan=index_scan
+[2024-03-01 00:39:30] ERROR [payment-service]   Webhook delivery failed: event=payment.failed url=https://merchant.example.com/webhook status=502
+[2024-03-01 00:40:15] INFO  [auth-service]      User login successful: user_id=7701 ip=10.0.0.55 session=xyz789
+[2024-03-01 00:41:02] INFO  [api-gateway]       GET /health 200 2ms
+[2024-03-01 00:42:18] WARN  [db-pool]           Replication lag detected: replica=db-replica-1 lag_seconds=12 threshold=5
+[2024-03-01 00:43:44] INFO  [api-gateway]       POST /api/v1/checkout 201 210ms user_id=7701
+[2024-03-01 00:44:05] DEBUG [cache]             Cache set: key=session:xyz789 ttl=1800
+[2024-03-01 00:45:33] ERROR [auth-service]      JWT validation failed: reason="token_expired" user_id=6601 ip=10.0.0.77
+[2024-03-01 00:46:00] INFO  [payment-service]   Payment successful: order_id=ORD-8824 user_id=7701 amount=54.75 method=paypal
+[2024-03-01 00:47:12] WARN  [inventory-service] Duplicate SKU detected: sku=ELEC-9900 product_ids=[5521,5530]
+[2024-03-01 00:48:44] INFO  [email-service]     Email sent: to=dave@example.com template=shipping_update msg_id=msg-4404
+[2024-03-01 00:49:05] DEBUG [db-pool]           Vacuum started: table=sessions estimated_dead_rows=15000
+[2024-03-01 00:50:20] ERROR [api-gateway]       POST /api/v1/upload 413 user_id=7701 reason="file_too_large" size_mb=52 limit_mb=10
+[2024-03-01 00:51:33] INFO  [api-gateway]       GET /api/v1/search?q=laptop 200 95ms user_id=7701
+[2024-03-01 00:52:44] WARN  [auth-service]      Suspicious login location: user_id=5500 usual_country=US detected_country=RO ip=198.51.100.22
+[2024-03-01 00:53:10] INFO  [inventory-service] Reorder triggered: product_id=3310 qty_ordered=200 supplier=supplier-A
+[2024-03-01 00:54:25] ERROR [db-pool]           Max connections reached: pool_size=10 active=10 idle=0 queued=5
+[2024-03-01 00:55:01] INFO  [api-gateway]       GET /api/v1/products/3310 200 14ms user_id=1042
+[2024-03-01 00:56:18] DEBUG [cache]             Cache miss: key=user:7701:recommendations ttl_remaining=0
+[2024-03-01 00:57:44] INFO  [payment-service]   Refund issued: order_id=ORD-8820 user_id=1042 amount=34.99 reason="customer_request"
+[2024-03-01 00:58:05] WARN  [email-service]     Email queue backup: queue_size=248 normal_size=50 worker_count=2
+[2024-03-01 00:59:30] ERROR [api-gateway]       GET /api/v1/reports/annual 500 user_id=9901 reason="internal_server_error" trace_id=abc-9912
+[2024-03-01 01:00:00] INFO  [api-gateway]       GET /health 200 2ms
+[2024-03-01 01:01:15] DEBUG [db-pool]           Connection acquired: pool_size=10 active=1 idle=9
+[2024-03-01 01:02:44] INFO  [auth-service]      User login successful: user_id=9901 ip=172.16.0.8 session=qrs456
+[2024-03-01 01:03:10] WARN  [payment-service]   High transaction volume: tps=142 normal_tps=50 alert_threshold=100
+[2024-03-01 01:04:33] INFO  [api-gateway]       GET /api/v1/orders?status=pending 200 78ms user_id=9901
+[2024-03-01 01:05:55] ERROR [inventory-service] Negative stock prevented: product_id=5522 attempted_qty=-3 current_qty=2
+[2024-03-01 01:06:01] INFO  [api-gateway]       PATCH /api/v1/orders/ORD-8823/status 200 33ms user_id=9901
+[2024-03-01 01:07:18] DEBUG [cache]             Cache invalidated: pattern=product:* keys_removed=87
+[2024-03-01 01:08:44] INFO  [email-service]     Email sent: to=eve@example.com template=order_confirm msg_id=msg-4405
+[2024-03-01 01:09:05] WARN  [db-pool]           Long-running transaction detected: duration=45s user_id=9901 query_hash=f3a9c1
+[2024-03-01 01:10:20] ERROR [payment-service]   Payment gateway timeout: gateway=stripe timeout_ms=5000 order_id=ORD-8825
+[2024-03-01 01:11:33] INFO  [api-gateway]       POST /api/v1/auth/logout 200 9ms user_id=7701
+[2024-03-01 01:12:44] WARN  [auth-service]      Session near expiry: user_id=9901 session=qrs456 expires_in=300s
+[2024-03-01 01:13:01] INFO  [inventory-service] Inventory audit complete: products_checked=1500 discrepancies=3
+[2024-03-01 01:14:18] DEBUG [db-pool]           Index rebuild started: index=idx_orders_user_id table=orders
+[2024-03-01 01:15:44] ERROR [api-gateway]       POST /api/v1/auth/login 401 ip=203.0.113.5 reason="account_locked"
+[2024-03-01 01:16:10] INFO  [payment-service]   Payment successful: order_id=ORD-8825 user_id=8801 amount=1200.00 method=bank_transfer
+[2024-03-01 01:17:25] WARN  [cache]             Eviction rate elevated: evictions_per_sec=320 normal=40
+[2024-03-01 01:18:44] INFO  [api-gateway]       GET /api/v1/dashboard 200 112ms user_id=9901
+[2024-03-01 01:19:05] DEBUG [auth-service]      MFA challenge issued: user_id=8801 method=totp ip=10.0.0.99
+[2024-03-01 01:20:30] ERROR [email-service]     SMTP connection refused: host=smtp.provider.com port=587 retry=3
+[2024-03-01 01:21:44] INFO  [api-gateway]       GET /api/v1/products?sort=price_asc 200 55ms user_id=8801
+[2024-03-01 01:22:10] WARN  [inventory-service] Shipment delayed: order_id=ORD-8819 carrier=FedEx expected=2024-03-02 updated=2024-03-04
+[2024-03-01 01:23:33] INFO  [payment-service]   Subscription renewed: user_id=1042 plan=premium amount=9.99 next_renewal=2024-04-01
+[2024-03-01 01:24:44] DEBUG [db-pool]           Connection released: pool_size=10 active=0 idle=10
+[2024-03-01 01:25:05] ERROR [api-gateway]       GET /api/v1/products/9999 404 user_id=8801 reason="not_found"
+[2024-03-01 01:26:18] INFO  [auth-service]      User login successful: user_id=8801 ip=10.0.0.99 session=lmn321
+[2024-03-01 01:27:44] WARN  [payment-service]   Chargeback received: order_id=ORD-8815 user_id=3310 amount=74.99 reason="fraud"
+[2024-03-01 01:28:05] INFO  [api-gateway]       GET /api/v1/products 200 43ms user_id=8801
+[2024-03-01 01:29:22] DEBUG [cache]             TTL extension: key=session:lmn321 extended_by=1800s
+[2024-03-01 01:30:01] INFO  [api-gateway]       GET /health 200 2ms
